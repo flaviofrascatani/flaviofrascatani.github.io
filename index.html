@@ -1,33 +1,266 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Flavio Frascatani</title>
-<style>
-body {
-    font-family: Georgia, serif;
-    max-width: 800px;
-    margin: 60px auto;
-    line-height: 1.6;
-}
-h1 { margin-bottom: 5px; }
-a { text-decoration: none; }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flavio Frascatani</title>
+  <meta name="description" content="Flavio Frascatani — International Relations, Conflict Studies, Ontology & Epistemology. Publications and PDFs." />
+
+  <style>
+    :root{
+      --bg: #0b0f14;
+      --card: rgba(255,255,255,0.06);
+      --card2: rgba(255,255,255,0.09);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.70);
+      --faint: rgba(255,255,255,0.55);
+      --line: rgba(255,255,255,0.12);
+      --accent: #7dd3fc; /* light cyan */
+      --accent2:#a78bfa; /* soft violet */
+      --shadow: 0 12px 40px rgba(0,0,0,0.45);
+      --radius: 18px;
+      --max: 960px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      color:var(--text);
+      font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(125,211,252,0.14), transparent 60%),
+        radial-gradient(1000px 700px at 80% 20%, rgba(167,139,250,0.12), transparent 55%),
+        radial-gradient(900px 700px at 60% 90%, rgba(34,197,94,0.08), transparent 55%),
+        var(--bg);
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ color:var(--accent); }
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 56px 20px 72px;
+    }
+
+    header{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:24px;
+      padding: 26px 26px 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, var(--card2), var(--card));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .title{
+      margin:0 0 8px;
+      font-size: clamp(28px, 4vw, 44px);
+      letter-spacing:-0.02em;
+      line-height:1.12;
+    }
+
+    .subtitle{
+      margin:0 0 14px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin: 12px 0 0;
+    }
+
+    .chip{
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(255,255,255,0.04);
+      font-size: 13px;
+      white-space:nowrap;
+    }
+
+    .right{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      min-width: 220px;
+      align-items:flex-end;
+    }
+
+    .btnrow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      font-size: 14px;
+      transition: transform .08s ease, background .15s ease, border-color .15s ease;
+      cursor:pointer;
+      user-select:none;
+    }
+    .btn:hover{
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.18);
+      transform: translateY(-1px);
+    }
+
+    .section{
+      margin-top: 26px;
+      padding: 22px 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(8px);
+    }
+
+    .section h2{
+      margin:0 0 14px;
+      font-size: 18px;
+      letter-spacing: .02em;
+      color: rgba(255,255,255,0.86);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    .hint{
+      font-size: 12px;
+      color: var(--faint);
+    }
+
+    .pub{
+      padding: 16px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(0,0,0,0.18);
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+    }
+
+    .pub + .pub{ margin-top: 12px; }
+
+    .pubtitle{
+      margin:0 0 6px;
+      font-weight: 650;
+      letter-spacing:-0.01em;
+    }
+
+    .pubmeta{
+      margin:0 0 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      min-width: 180px;
+    }
+
+    .tag{
+      font-size: 12px;
+      color: rgba(255,255,255,0.72);
+      border: 1px solid rgba(255,255,255,0.14);
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+    }
+
+    footer{
+      margin-top: 22px;
+      color: var(--faint);
+      font-size: 13px;
+      padding: 0 6px;
+    }
+
+    @media (max-width: 720px){
+      header{ flex-direction:column; }
+      .right{ align-items:flex-start; min-width:auto; }
+      .actions{ min-width:auto; justify-content:flex-start; }
+      .pub{ flex-direction:column; }
+    }
+  </style>
 </head>
+
 <body>
+  <div class="wrap">
 
-<h1>Flavio Frascatani</h1>
-<p> | International Relations | Conflict Studies | Ontology & Epistemology | </p>
+    <header>
+      <div>
+        <h1 class="title">Flavio Frascatani</h1>
+        <p class="subtitle">International Relations · Conflict Studies · Ontology & Epistemology</p>
 
-<h2>Publications</h2>
+        <div class="chips">
+          <span class="chip">Research</span>
+          <span class="chip">Publications</span>
+          <span class="chip">PDFs</span>
+        </div>
+      </div>
 
-<ul>
-<li>
-<strong>Title of Paper (2026)</strong><br>
-Journal / Working Paper<br>
-<a href="pdf/paper1.pdf">Download PDF</a>
-</li>
-</ul>
+      <div class="right">
+        <div class="btnrow">
+          <!-- Cambia i link quando li hai -->
+          <a class="btn" href="cv.pdf" target="_blank" rel="noopener">CV</a>
+          <a class="btn" href="mailto:you@example.com">Email</a>
+          <a class="btn" href="#" target="_blank" rel="noopener">Google Scholar</a>
+        </div>
+        <div class="hint">Minimal, fast, and indexable.</div>
+      </div>
+    </header>
 
+    <section class="section">
+      <h2>
+        Publications
+        <span class="hint">PDFs hosted on this site</span>
+      </h2>
+
+      <article class="pub">
+        <div>
+          <p class="pubtitle">Title of Paper (2026)</p>
+          <p class="pubmeta">Journal / Working Paper</p>
+          <span class="tag">Working Paper</span>
+        </div>
+
+        <div class="actions">
+          <a class="btn" href="pdf/paper1.pdf" target="_blank" rel="noopener">Open PDF</a>
+          <a class="btn" href="pdf/paper1.pdf" download>Download</a>
+        </div>
+      </article>
+
+      <!-- Copia questo blocco <article class="pub"> ... </article> per aggiungere altri paper -->
+    </section>
+
+    <footer>
+      © <span id="y"></span> Flavio Frascatani · Hosted on GitHub Pages
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
